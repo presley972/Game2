@@ -26,8 +26,22 @@ class Map
 
     public function getCell(int $row, int $col): string {
         if(!isset($this->board[$row][$col])){
-            throw new \LogicException('zero');
+            throw new BoardOutOfBoundariesException($row,$col,count($this->board));
         }
         return $this->board[$row][$col];
+    }
+
+    public function displayHtml()
+    {
+        $sizeBoard = count($this->board);
+        $board = $this;
+        ob_start();
+        try {
+            require __DIR__."/../view/board.php";
+        }catch (\Throwable $exception) {
+            ob_clean();
+            throw $exception;
+        }
+        ob_end_flush();
     }
 }
