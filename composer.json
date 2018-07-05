@@ -1,0 +1,16 @@
+{
+    "name": "presleylupon/game2",
+    "authors": [
+        {
+            "name": "Presley Lupon",
+            "email": "presleylupon@gmail.com"
+        }
+    ],
+    "require": {},
+
+    "autoload": {
+        "psr-4":{
+            "Entity\\" : "Entity/"
+        }
+    }
+}
