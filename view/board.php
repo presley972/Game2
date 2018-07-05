@@ -30,9 +30,9 @@
     <table>
         <?php for ($j=0; $j < $sizeBoard; $j++):?>
             <tr>
-                <?php for ($i=0; $i<$sizeBoard+10; $i++):?>
+                <?php for ($i=0; $i<$sizeBoard; $i++):?>
                     <td>
-                        <?php echo $board->getCell($j,$i) ?>
+                        <?php echo $board->getCell($j,$i)->getCoordinate(); ?>
                     </td>
                 <?php endfor; ?>
             </tr>

@@ -17,14 +17,21 @@ class Map
         for ($row=0; $row<$sizeBoard; $row++){
             $board[$row]=[];
             for ($col=0; $col<$sizeBoard; $col++){
-                $board[$row][$col]=$row.",".$col;
+                if(($row%2 == 0 && $col%2 == 0)OR($row%2 == 1 && $col%2 == 1))
+                    $board[$row][$col]=new WhiteCell($row, $col);
+                else
+                    $board[$row][$col]= new BlackCell($row, $col);
+
+
+                    //$board[$row][$col]=$row.",".$col;
+
             }
         }
         $this->board= $board;
     }
 
 
-    public function getCell(int $row, int $col): string {
+    public function getCell(int $row, int $col): Cell {
         if(!isset($this->board[$row][$col])){
             throw new BoardOutOfBoundariesException($row,$col,count($this->board));
         }
