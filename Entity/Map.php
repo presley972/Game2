@@ -51,4 +51,9 @@ class Map
         }
         ob_end_flush();
     }
+
+    public function getBoardSize():int
+    {
+        return count($this->board);
+    }
 }

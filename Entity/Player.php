@@ -29,4 +29,9 @@ class Player
 
         $this->item = $item;
     }
+
+    public function getPieces()
+    {
+        return $this->item;
+    }
 }

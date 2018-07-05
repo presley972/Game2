@@ -21,7 +21,12 @@ class Game
         $this->playerOne = $playerOne;
         $this->playerTwo = $playerTwo;
         $this->map = $map;
-
+        $rowNbr = 0;
+        $colNbr = 0;
+        foreach ($playerOne->getPieces()as $piece){
+            $map->getBoardSize();
+            $map->getCell($rowNbr, $colNbr)->moveto($piece);
+        }
     }
 
     public function displayHtml()
