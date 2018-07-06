@@ -21,11 +21,30 @@ class Game
         $this->playerOne = $playerOne;
         $this->playerTwo = $playerTwo;
         $this->map = $map;
-        $rowNbr = 0;
-        $colNbr = 0;
-        foreach ($playerOne->getPieces()as $piece){
-            $map->getBoardSize();
-            $map->getCell($rowNbr, $colNbr)->moveto($piece);
+        $cell = $map->getCell(0,0);
+        foreach ($playerOne->getPieces() as $piece){
+            $movedToCell = false;
+            do{
+                try{
+                    $cell = $cell->moveto($piece);
+                    $movedToCell = true;
+                }catch (ErrorPlacing $exception){
+                    $cell = $map->getNextCell($cell);
+                }
+            }while($movedToCell === false);
+        }
+        $sizeMinusOne = $this->map->getBoardSize()-1;
+        $cell = $map->getCell($sizeMinusOne,$sizeMinusOne);
+        foreach ($playerTwo->getPieces() as $piece){
+            $movedToCell = false;
+            do{
+                try{
+                    $cell = $cell->moveto($piece);
+                    $movedToCell = true;
+                }catch (ErrorPlacing $exception){
+                    $cell = $map->getPreviousCell($cell);
+                }
+            }while($movedToCell === false);
         }
     }
 

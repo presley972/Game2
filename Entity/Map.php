@@ -23,7 +23,7 @@ class Map
                     $board[$row][$col]= new BlackCell($row, $col);
 
 
-                    //$board[$row][$col]=$row.",".$col;
+                //$board[$row][$col]=$row.",".$col;
 
             }
         }
@@ -52,8 +52,36 @@ class Map
         ob_end_flush();
     }
 
+    public function getNextCell(Cell $cell) : Cell
+    {
+        $col= $cell->getCol();
+        $row=$cell->getRow();
+        if(($col+1)<$this->getBoardSize()){
+            return $this->board[$row][++$col];
+        }
+        $col = 0;
+        if(($row+1)<$this->getBoardSize()){
+            return $this->board[++$row][$col];
+        }
+        throw new BoardOutOfBoundariesException($row,$col,$this->getBoardSize());
+    }
+
     public function getBoardSize():int
     {
         return count($this->board);
+    }
+
+    public function getPreviousCell(Cell $cell):Cell
+    {
+        $col= $cell->getCol();
+        $row=$cell->getRow();
+        if(($col-1)>=0){
+            return $this->board[$row][--$col];
+        }
+        $col = $this->getBoardSize()-1;
+        if(($row-1)>=0){
+            return $this->board[--$row][$col];
+        }
+        throw new BoardOutOfBoundariesException($row,$col,$this->getBoardSize());
     }
 }

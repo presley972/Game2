@@ -9,22 +9,20 @@ declare(strict_types=1);
 
 namespace Entity;
 
-
 class BlackCell extends Cell
 {
-        private $piece = null;
-    /**
-     * BlackCell constructor.
-     */
+    private $piece = null;
 
-
-    public function moveto(Piece $piece) :void
+    public function moveto(Piece $piece): Cell
     {
-        // TODO: Implement moveto() method.
-        if( $this->piece == null ){
-
-            throw new \LogicException('désolé pas ici!');
+        if( $this->piece !== null ){
+            throw new ErrorPlacing($this->row, $this->col);
         }
         $this->piece = $piece;
+        return $this;
+    }
+    public function getPresence(): int
+    {
+        return (int) ($this->piece !== null);
     }
 }

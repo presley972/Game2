@@ -11,13 +11,12 @@ namespace Entity;
 
 class WhiteCell extends Cell
 {
-
-    /**
-     * WhiteCell constructor.
-     */
-    public function moveto(Piece $piece)
+    public function moveto(Piece $piece): Cell
     {
-        // TODO: Implement moveto() method.
-        throw new \LogicException('désolé pas ici!');
+        throw new ErrorPlacing($this->row, $this->col);
+    }
+    public function getPresence(): int
+    {
+        return 0;
     }
 }

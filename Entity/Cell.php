@@ -20,7 +20,7 @@ abstract class Cell
      */
     protected $col;
 
-    public abstract function moveto(Piece $piece);
+    public abstract function moveto(Piece $piece): Cell;
 
     public function __construct(int $row, int $col)
     {
@@ -36,4 +36,22 @@ abstract class Cell
     {
         return $this->row.', '.$this->col;
     }
+
+    /**
+     * @return int
+     */
+    public function getRow(): int
+    {
+        return $this->row;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCol(): int
+    {
+        return $this->col;
+    }
+
+    public abstract function getPresence():int;
 }

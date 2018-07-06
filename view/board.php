@@ -32,7 +32,7 @@
             <tr>
                 <?php for ($i=0; $i<$sizeBoard; $i++):?>
                     <td>
-                        <?php echo $board->getCell($j,$i)->getCoordinate(); ?>
+                        <?php echo $board->getCell($j,$i)->getPresence(); ?>
                     </td>
                 <?php endfor; ?>
             </tr>

@@ -11,9 +11,21 @@ namespace Entity;
 
 abstract class Piece
 {
+    private $number;
+
+    public function __construct(int $pieceNumber)
+    {
+        $this->number = $pieceNumber;
+    }
+
     public function display()
     {
         echo get_class($this);
+    }
+
+    public function getNumber(): int
+    {
+        return $this->number;
     }
 
 }

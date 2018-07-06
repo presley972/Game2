@@ -23,8 +23,8 @@ class Player
 
         $item=[];
 
-        for ($pion = 0; $pion < $numberItem; $pion++ ){
-            $item[$pion]= new Pion();
+        for ($pion = 0; $pion < $numberItem; $pion++){
+            $item[$pion]= new Pion($pion+1);
         }
 
         $this->item = $item;

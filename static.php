@@ -23,3 +23,4 @@ new Test();
 
 
 echo Test::$counter;
+
